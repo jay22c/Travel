@@ -39,7 +39,7 @@
   </tr>
   </c:forEach>
 </table>
-<br/><button type="location.href='add'">새글쓰기</button>
 
+<button type="button" onclick="location.href='addpostform'">새글쓰기</button>
 </body>
 </html>

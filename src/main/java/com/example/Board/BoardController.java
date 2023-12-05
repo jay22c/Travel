@@ -21,7 +21,7 @@ public class BoardController {
 
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    @RequestMapping(value = "/addpostform", method = RequestMethod.GET)
     public String addPost() {
         return "addpostform";
     }
