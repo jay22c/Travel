@@ -39,7 +39,7 @@ public class BoardController {
     @RequestMapping(value = "/editform/{id}", method = RequestMethod.GET)
     public String editPost(@PathVariable("id") int id, Model model) {
         BoardVO boardVO = boardService.getBoard(id);
-        model.addAttribute("u", boardVO);
+        model.addAttribute("board", boardVO);
         return "editform";
     }
     @RequestMapping(value = "/editok", method = RequestMethod.POST)

@@ -10,22 +10,24 @@
 <title>Edit Form</title>
 </head>
 <body>
-<%
-	BoardDAO boardDAO = new BoardDAO();
-	String id=request.getParameter("seq");
-	BoardVO u=boardDAO.getBoard(Integer.parseInt(id));
-%>
+<%--<%--%>
+<%--	BoardDAO boardDAO = new BoardDAO();--%>
+<%--	String id=request.getParameter("seq");--%>
+<%--	BoardVO u=boardDAO.getBoard(Integer.parseInt(id));--%>
+<%--%>--%>
 
 <h1>Edit Form</h1>
 <%--@elvariable id="BoardVO" type=""--%>
-<form:form commandName="BoardVO" method="POST" action="../editok">
+<%--@elvariable id="board" type=""--%>
+<form:form modelAttribute="board" method="POST" action="../editok">
 <form:hidden path="seq"/>
 <table id="edit">
-<tr><td>카테고리</td><td><input type="text" path="category" value="<%= u.getCategory()%>"/></td></tr>
-<tr><td>제목</td><td><input type="text" path="title" value="<%= u.getTitle()%>"/></td></tr>
-<tr><td>글쓴이</td><td><input type="text" path="writer" value="<%= u.getWriter()%>" /></td></tr>
-<tr><td>내용</td><td><textarea cols="50" path="5" name="content"><%= u.getContent()%></textarea></td></tr>
+<tr><td>카테고리</td><td><form:input type="text" path="category"/></td></tr>
+<tr><td>제목</td><td><form:input type="text" path="title"/></td></tr>
+<tr><td>글쓴이</td><td><form:input type="text" path="writer"/></td></tr>
+<tr><td>내용</td><td><form:textarea cols="50" rows="5" path="content"></form:textarea></td></tr>
 </table>
+
 	<input type="submit" value="수정하기"/>
 	<input type="button" value="취소하기" onclick="history">
 </form:form>
