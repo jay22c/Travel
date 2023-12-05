@@ -10,10 +10,9 @@
 <title>Edit Form</title>
 </head>
 <body>
-
 <%
 	BoardDAO boardDAO = new BoardDAO();
-	String id=request.getParameter("id");
+	String id=request.getParameter("seq");
 	BoardVO u=boardDAO.getBoard(Integer.parseInt(id));
 %>
 

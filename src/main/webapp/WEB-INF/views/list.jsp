@@ -6,7 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" language="java" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
 
 <html>
 <head>
@@ -28,14 +29,14 @@
 
   <c:forEach items="${list}" var="u">
   <tr>
-    <td>${u.seq()}</td>
-    <td>${u.category()}</td>
-    <td>${u.title()}</td>
-    <td>${u.writer()}</td>
-    <td>${u.content()}</td>
-    <td>${u.regdate()}</td>
-    <td><a href="editform/${u.Seq()}">글수정</a></td>
-    <td><a href="javascript:delete_ok('${u.seq()}')">글삭제</a></td>
+    <td>${u.getSeq()}</td>
+    <td>${u.getCategory()}</td>
+    <td>${u.getTitle()}</td>
+    <td>${u.getWriter()}</td>
+    <td>${u.getContent()}</td>
+    <td>${u.getRegdate()}</td>
+    <td><a href="editform/${u.getSeq()}">글수정</a></td>
+    <td><a href="deleteok/'${u.getSeq()}'">글삭제</a></td>
   </tr>
   </c:forEach>
 </table>
