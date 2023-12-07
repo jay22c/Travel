@@ -36,10 +36,18 @@
     <td>${u.getContent()}</td>
     <td>${u.getRegdate()}</td>
     <td><a href="editform/${u.getSeq()}">글수정</a></td>
-    <td><a href="deleteok/'${u.getSeq()}'">글삭제</a></td>
+    <td><a href="javascript:delete_ok('${u.getSeq()}')">글삭제</a></td>
   </tr>
   </c:forEach>
 </table>
+
+<script>
+  function delete_ok(id) {
+    var a = confirm("정말로 삭제하겠습니까?");
+    if (a) location.href='deleteok/' + id;
+  }
+</script>
+
 
 <button type="button" onclick="location.href='addpostform'">새글쓰기</button>
 </body>

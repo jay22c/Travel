@@ -44,7 +44,8 @@ public class BoardController {
     }
     @RequestMapping(value = "/editok", method = RequestMethod.POST)
     public String editPostOk(BoardVO vo){
-        if(boardService.updateBoard(vo)==0)
+        int i = boardService.updateBoard(vo);
+        if(i==0)
             System.out.println("데이터 수정 실패");
         else
             System.out.println(("데이터 수정 성공!!!"));
