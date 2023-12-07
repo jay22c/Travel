@@ -37,6 +37,7 @@
     <td>${u.getRegdate()}</td>
     <td><a href="editform/${u.getSeq()}">글수정</a></td>
     <td><a href="javascript:delete_ok('${u.getSeq()}')">글삭제</a></td>
+    <td><a href="view/${u.getSeq()}">자세히 보기</a></td>
   </tr>
   </c:forEach>
 </table>
