@@ -1,5 +1,6 @@
 package com.example.Board;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -13,7 +14,7 @@ import java.util.List;
 public class BoardDAO {
 
     @Autowired
-    JdbcTemplate jdbcTemplate;
+    SqlSession sqlSession;
 
 //    Connection conn = null;
 //    PreparedStatement stmt = null;
@@ -26,56 +27,47 @@ public class BoardDAO {
 //    private final String BOARD_LIST = "select * from BOARD order by seq desc";
 
     public int insertBoard(BoardVO vo) {
-        String sql = "insert into BOARD (title, writer, content, category) values ("
-                + "'" + vo.getTitle()+"',"
-                + "'" + vo.getWriter()+"',"
-                + "'" + vo.getContent()+"',"
-                + "'" + vo.getCategory()+"')";
-
-        return jdbcTemplate.update(sql);
+        int count = sqlSession.insert("Board.insertBoard",vo);
+       return count;
     }
 
     // 글 삭제
-    public int deleteBoard(int seq) {
-        String sql = "delete from BOARD where seq = " + seq;
+    public int deleteBoard(int id) {
 
-        return jdbcTemplate.update(sql);
+        int result = sqlSession.delete("Board.deleteBoard",id);
+        return result;
+
 
     }
     public int updateBoard(BoardVO vo) {
-        String sql = "update BOARD set title = '" + vo.getTitle()+"',"
-                + "title='" + vo.getTitle()+"',"
-                + "writer='" + vo.getWriter()+"',"
-                + "content='" + vo.getContent()+"',"
-                + "category='" + vo.getCategory()+"'  where seq = " + vo.getSeq();
-
-        return jdbcTemplate.update(sql);
+        int result = sqlSession.update("Board.updateBoard",vo);
+        return result;
 
     }
 
 
     public BoardVO getBoard(int seq) {
-        String sql = "select * from BOARD where seq =" + seq;
-        return jdbcTemplate.queryForObject(sql, new BoardRowMapper());
+        BoardVO one = sqlSession.selectOne("Board.getBoard",seq);
+        return one;
     }
 
     public List<BoardVO> getBoardList(){
-        String sql = "select * from BOARD order by regdate desc ";
-        return jdbcTemplate.query(sql, new BoardRowMapper());
+        List<BoardVO> list = sqlSession.selectList("Board.getBoardList");
+        return list;
     }
 }
 
-class BoardRowMapper implements RowMapper<BoardVO> {
-    @Override
-    public BoardVO mapRow(ResultSet rs, int rowNum) throws SQLException{
-        BoardVO vo = new BoardVO();
-        vo.setSeq(rs.getInt("seq"));
-        vo.setTitle(rs.getString("title"));
-        vo.setContent(rs.getString("content"));
-        vo.setWriter(rs.getString("writer"));
-        vo.setCategory(rs.getString("category"));
-        vo.setRegdate(rs.getDate("regdate"));
-        return vo;
-
-    }
-}
+//class BoardRowMapper implements RowMapper<BoardVO> {
+//    @Override
+//    public BoardVO mapRow(ResultSet rs, int rowNum) throws SQLException{
+//        BoardVO vo = new BoardVO();
+//        vo.setSeq(rs.getInt("seq"));
+//        vo.setTitle(rs.getString("title"));
+//        vo.setContent(rs.getString("content"));
+//        vo.setWriter(rs.getString("writer"));
+//        vo.setCategory(rs.getString("category"));
+//        vo.setRegdate(rs.getDate("regdate"));
+//        return vo;
+//
+//    }
+//}
