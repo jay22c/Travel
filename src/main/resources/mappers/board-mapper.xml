@@ -4,14 +4,14 @@
 <mapper namespace="Board">
 
     <insert id="insertBoard">
-        insert into travel_plan (category, title, writer, content)
+        insert into travel_plan (category, title, writer, content, date, place, email)
             values
-                (#{category}, #{title}, #{writer}, #{content})
+                (#{category}, #{title}, #{writer}, #{content}, #{date}, #{place}, #{email})
     </insert>
 
     <update id="updateBoard">
         update travel_plan
-        set title=#{title}, content=#{content}, writer=#{writer}, category=#{category} where seq = #{seq}
+        set title=#{title}, content=#{content}, writer=#{writer}, category=#{category}, date=#{date}, place=#{place}, email=#{email}  where seq = #{seq}
     </update>
 
     <delete id="deleteBoard">

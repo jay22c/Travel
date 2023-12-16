@@ -8,9 +8,14 @@ public class BoardVO {
     private String title;
     private String writer;
     private String content;
-    private Date regdate;
+    private String date;
+    private String place;
+    private String email;
 
-    private int cnt;
+
+
+    public BoardVO() {
+    }
 
     public int getSeq() {
         return seq;
@@ -38,12 +43,6 @@ public class BoardVO {
         this.content = content;
     }
 
-    public int getCnt() {
-        return cnt;
-    }
-//    public void setCnt(int cnt) {
-//        this.cnt = cnt;
-//    }
 
     public String getCategory() {
         return category;
@@ -53,12 +52,27 @@ public class BoardVO {
         this.category = category;
     }
 
-
-    public Date getRegdate() {
-        return regdate;
+    public String getDate() {
+        return date;
     }
 
-    public void setRegdate(Date regdate) {
-        this.regdate = regdate;
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPlace() {
+        return place;
+    }
+
+    public void setPlace(String place) {
+        this.place = place;
     }
 }

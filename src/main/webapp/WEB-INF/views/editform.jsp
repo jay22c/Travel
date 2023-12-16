@@ -24,10 +24,14 @@
 <form:form modelAttribute="board" method="POST" action="../editok">
 <form:hidden path="seq"/>
 <table id="edit">
-<tr><td>카테고리</td><td><form:input type="text" path="category"/></td></tr>
+<tr><td>카테고리(ex: 유럽여행, 미국여행)</td><td><form:input type="text" path="category"/></td></tr>
 <tr><td>제목</td><td><form:input type="text" path="title"/></td></tr>
 <tr><td>글쓴이</td><td><form:input type="text" path="writer"/></td></tr>
+	<tr><td>여행지</td><td><form:input type="text" path="place"/></td></tr>
+	<tr><td>날짜</td><td><form:input type="text" path="date"/></td></tr>
 <tr><td>내용</td><td><form:textarea cols="50" rows="5" path="content" /></td></tr>
+	<tr><td>이메일</td><td><form:input type="text" path="email"/></td></tr>
+
 </table>
 
 	<input type="submit" value="수정하기"/>

@@ -22,7 +22,9 @@
     <th>Title</th>
     <th>Writer</th>
     <th>Content</th>
-    <th>Regdate</th>
+    <th>Date</th>
+    <th>place</th>
+    <th>email</th>
     <th>Edit</th>
     <th>Delete</th>
   </tr>
@@ -34,7 +36,9 @@
     <td>${u.getTitle()}</td>
     <td>${u.getWriter()}</td>
     <td>${u.getContent()}</td>
-    <td>${u.getRegdate()}</td>
+    <td>${u.getDate()}</td>
+    <td>${u.getPlace()}</td>
+    <td>${u.getEmail()}</td>
     <td><a href="editform/${u.getSeq()}">글수정</a></td>
     <td><a href="javascript:delete_ok('${u.getSeq()}')">글삭제</a></td>
     <td><a href="view/${u.getSeq()}">자세히 보기</a></td>
